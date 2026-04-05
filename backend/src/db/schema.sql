@@ -1,0 +1,36 @@
+CREATE DATABASE IF NOT EXISTS real_estate;
+USE real_estate;
+
+CREATE TABLE IF NOT EXISTS listings (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  external_id VARCHAR(255) UNIQUE,
+  title VARCHAR(500) NOT NULL,
+  description TEXT,
+  ai_summary TEXT,
+  price DECIMAL(12, 2),
+  price_per_sqm DECIMAL(10, 2),
+  currency VARCHAR(10) DEFAULT 'PLN',
+  area_sqm DECIMAL(8, 2),
+  rooms INT,
+  floor INT,
+  total_floors INT,
+  city VARCHAR(255),
+  district VARCHAR(255),
+  address VARCHAR(500),
+  latitude DECIMAL(10, 8),
+  longitude DECIMAL(11, 8),
+  property_type ENUM('apartment', 'house', 'studio', 'commercial', 'other') DEFAULT 'apartment',
+  listing_type ENUM('sale', 'rent') DEFAULT 'sale',
+  year_built INT,
+  has_parking BOOLEAN DEFAULT FALSE,
+  has_balcony BOOLEAN DEFAULT FALSE,
+  has_elevator BOOLEAN DEFAULT FALSE,
+  has_storage BOOLEAN DEFAULT FALSE,
+  heating_type VARCHAR(100),
+  condition_type VARCHAR(100),
+  images JSON,
+  source_url VARCHAR(1000),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  FULLTEXT INDEX ft_search (title, description, city, district)
+);
