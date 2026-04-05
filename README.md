@@ -115,4 +115,4 @@ Open http://localhost:3000
 
 ## Reasoning Document
 
-See `docs/reasoning.md` for the full technical reasoning — data decisions, normalisation approach, AI usage, assumptions, success metrics, and limitations.
+Check the `docs/` directory for the full technical reasoning — data decisions, normalisation approach, AI usage, assumptions, success metrics, and limitations.
